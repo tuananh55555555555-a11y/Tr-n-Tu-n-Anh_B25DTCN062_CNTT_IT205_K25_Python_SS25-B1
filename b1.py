@@ -7,18 +7,12 @@ class BankAccount:
         self._account_name = None
         self.account_name = account_name
         self.__balance = 0
-
-    # @property khiến phương thức này nhìn như một thuộc tính khi truy cập.
     @property
     def balance(self):
         return self.__balance
-
-    # @property cho getter để đọc account_name như một thuộc tính.
     @property
     def account_name(self):
         return self._account_name
-
-    # @account_name.setter cho phép kiểm tra và chuẩn hóa khi gán account_name.
     @account_name.setter
     def account_name(self, name):
         normalized_name = " ".join(str(name).split())
@@ -27,14 +21,12 @@ class BankAccount:
             return
         self._account_name = normalized_name.upper()
 
-    # @staticmethod không dùng self hoặc cls; chỉ xác thực dữ liệu đầu vào.
     @staticmethod
     def validate_account_number(account_number):
         if not account_number.isdigit() or len(account_number) != 10:
             return False
         return True
 
-    # @classmethod nhận tham số cls và cập nhật chính sách phí giao dịch chung cho tất cả tài khoản.
     @classmethod
     def update_transaction_fee(cls, new_fee: int):
         if new_fee < 0:
